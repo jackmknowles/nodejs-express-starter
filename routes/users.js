@@ -4,7 +4,7 @@ var router = express.Router();
 const UserService = require('../services/userService');
 const userService = new UserService();
 
-// Create a new user form
+// Create a new user form2
 router.get('/add', (req, res) => {
   res.render('addUser')
 });
