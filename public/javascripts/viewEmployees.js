@@ -1,6 +1,6 @@
-// Placeholder handlers - to be implemented in future user stories (US004, US005)
-function handleEdit(empNumber) {
-    alert('Edit feature coming soon!\nEmployee: ' + empNumber);
+// Navigate to update page for the selected employee
+function handleEdit(empId) {
+    window.location.href = '/employees/update/' + empId;
 }
 
 function handleDelete(empNumber) {

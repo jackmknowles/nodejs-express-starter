@@ -34,6 +34,24 @@ router.post('/add', validateEmployee, (req, res) => {
     res.json({ success: true, employee: createdEmployee });
 });
 
+// GET /employees/update/:id - show update form with pre-filled data
+router.get('/update/:id', (req, res) => {
+    const employee = employeeService.getEmployeeById(parseInt(req.params.id));
+    if (!employee) {
+        return res.status(404).send('Employee not found');
+    }
+    res.render('updateEmployee', { employee: employee });
+});
+
+// POST /employees/update/:id - handle update form submission
+router.post('/update/:id', validateEmployee, (req, res) => {
+    const employee = employeeService.updateEmployee(parseInt(req.params.id), req.body);
+    if (!employee) {
+        return res.status(404).json({ success: false, message: 'Employee not found' });
+    }
+    res.json({ success: true, employee: employee });
+});
+
 // GET /employees/:id - show single employee detail
 router.get('/:id', (req, res) => {
     const employee = employeeService.getEmployeeById(parseInt(req.params.id));

@@ -48,6 +48,20 @@ class EmployeeService {
         this.writeEmployees(employees);
         return newEmployee;
     }
+
+    updateEmployee(id, updatedData) {
+        const employees = this.readEmployees();
+        const employee = employees.find(emp => emp.id === id);
+        if (!employee) {
+            return null;
+        }
+        employee.name = updatedData.name;
+        employee.address = updatedData.address;
+        employee.salary = Number(updatedData.salary);
+        employee.role = updatedData.role;
+        this.writeEmployees(employees);
+        return employee;
+    }
 }
 
 module.exports = EmployeeService;
