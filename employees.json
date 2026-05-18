@@ -6,5 +6,13 @@
     "role": "Software Engineer",
     "id": 1,
     "employeeNumber": "EMP001"
+  },
+  {
+    "name": "Usama Hussain",
+    "address": "Faisalabad, Pakistan",
+    "salary": 2000,
+    "role": "Web Developer",
+    "id": 2,
+    "employeeNumber": "EMP002"
   }
 ]
