@@ -17,6 +17,12 @@ function validateEmployee(req, res, next) {
     next();
 }
 
+// GET /employees - show all employees
+router.get('/', (req, res) => {
+    const employees = employeeService.getAllEmployees();
+    res.render('viewEmployees', { employees: employees });
+});
+
 // GET /employees/add - show form
 router.get('/add', (req, res) => {
     res.render('addEmployee');

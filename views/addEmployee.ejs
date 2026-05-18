@@ -4,353 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Add New Employee</title>
-    <!-- Google Font: Poppins for a clean modern look -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        /* ===== RESET DEFAULT BROWSER STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Disable horizontal scroll on the whole page */
-        html {
-            overflow-x: hidden;
-        }
-
-        /* ===== PAGE BACKGROUND ===== */
-        body {
-            font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
-            /* Purple gradient background that stays fixed while scrolling */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-attachment: fixed;
-            padding: 40px 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* ===== DECORATIVE FLOATING CIRCLES ===== */
-        /* Two semi-transparent circles that float around in the background */
-        body::before,
-        body::after {
-            content: '';
-            position: fixed;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            animation: float 8s ease-in-out infinite;
-            z-index: 0;
-        }
-
-        /* Top-left circle */
-        body::before {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            left: -100px;
-        }
-
-        /* Bottom-right circle (starts 2s later for variety) */
-        body::after {
-            width: 400px;
-            height: 400px;
-            bottom: -150px;
-            right: -150px;
-            animation-delay: 2s;
-        }
-
-        /* Floating animation - moves up and rotates */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-30px) rotate(180deg);
-            }
-        }
-
-        /* ===== MAIN FORM CARD ===== */
-        .form-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px); /* Frosted glass effect */
-            max-width: 480px;
-            width: 100%;
-            margin: 0 auto; /* Center horizontally */
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 1; /* Sit above the floating circles */
-            animation: slideUp 0.6s ease;
-        }
-
-        /* Form slides up and fades in on page load */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== FORM HEADER (icon + title) ===== */
-        .form-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        /* Round purple avatar icon at the top */
-        .form-header .icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            font-size: 30px;
-            color: white;
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        h1 {
-            color: #2d3748;
-            font-size: 26px;
-            font-weight: 600;
-        }
-
-        .subtitle {
-            color: #718096;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        /* ===== FORM FIELDS ===== */
-        .form-group {
-            margin-top: 18px;
-            position: relative;
-        }
-
-        /* Uppercase label style */
-        label {
-            display: block;
-            font-weight: 500;
-            color: #4a5568;
-            font-size: 13px;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Default input styling */
-        input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 14px;
-            font-family: inherit;
-            background: #f7fafc;
-            transition: all 0.3s ease;
-        }
-
-        /* When user clicks/focuses on an input - turns purple */
-        input:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        /* When a field has a validation error - turns red */
-        input.error {
-            border-color: #e53e3e;
-            background: #fff5f5;
-        }
-
-        /* Red error message under each input (hidden by default) */
-        .error-msg {
-            color: #e53e3e;
-            font-size: 12px;
-            margin-top: 5px;
-            display: none;
-            font-weight: 500;
-        }
-
-        /* Adds a warning icon ⚠ before every error message */
-        .error-msg::before {
-            content: '⚠ ';
-        }
-
-        /* ===== SUBMIT BUTTON ===== */
-        button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 14px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: inherit;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Button lifts up slightly on hover */
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-        }
-
-        /* Returns to normal when pressed */
-        button:active {
-            transform: translateY(0);
-        }
-
-        /* ===== SUCCESS POPUP ===== */
-        /* Dark transparent overlay that covers the whole screen */
-        .popup-overlay {
-            display: none; /* Hidden until form submits successfully */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px); /* Blurs the form behind it */
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-        }
-
-        /* The white popup card in the middle */
-        .popup-box {
-            background: white;
-            padding: 40px 50px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            max-width: 400px;
-        }
-
-        /* Popup zooms in with a bouncy effect */
-        @keyframes popIn {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* Green circle with checkmark inside the popup */
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #48bb78, #38a169);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(72, 187, 120, 0.4);
-            animation: checkBounce 0.6s ease;
-        }
-
-        /* Bouncy spin animation for the checkmark icon */
-        @keyframes checkBounce {
-            0% {
-                transform: scale(0) rotate(-180deg);
-            }
-            60% {
-                transform: scale(1.2) rotate(10deg);
-            }
-            100% {
-                transform: scale(1) rotate(0);
-            }
-        }
-
-        /* Popup text styling */
-        .popup-box h2 {
-            color: #2d3748;
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .popup-box p {
-            color: #718096;
-            margin-bottom: 25px;
-            font-size: 14px;
-        }
-
-        /* Green "Continue" button inside the popup */
-        .popup-box button {
-            background: linear-gradient(135deg, #48bb78, #38a169);
-            width: auto;
-            padding: 10px 40px;
-            margin: 0;
-            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
-        }
-
-        .popup-box button:hover {
-            box-shadow: 0 8px 25px rgba(72, 187, 120, 0.5);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/addEmployee.css">
 </head>
 
 <body>
 
+    <!-- Top navigation: View All Employees button -->
+    <div class="top-nav">
+        <a href="/employees" class="view-btn">👥 View All Employees</a>
+    </div>
+
     <!-- ===== MAIN FORM CARD ===== -->
     <div class="form-container">
-        <!-- Header with avatar icon and title -->
         <div class="form-header">
             <div class="icon">👤</div>
             <h1>Add New Employee</h1>
             <p class="subtitle">Fill in the details below to create a new record</p>
         </div>
 
-        <!-- novalidate disables browser's built-in validation so our JS handles it -->
         <form id="employeeForm" novalidate>
 
-            <!-- Name field -->
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="John Smith">
                 <div class="error-msg" id="nameError">Name is required</div>
             </div>
 
-            <!-- Address field -->
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" id="address" name="address" placeholder="123 Belfast Road">
                 <div class="error-msg" id="addressError">Address is required</div>
             </div>
 
-            <!-- Salary field (numbers only) -->
             <div class="form-group">
                 <label for="salary">Salary (£)</label>
                 <input type="number" id="salary" name="salary" placeholder="35000">
                 <div class="error-msg" id="salaryError">Salary must be a positive number</div>
             </div>
 
-            <!-- Role field -->
             <div class="form-group">
                 <label for="role">Role</label>
                 <input type="text" id="role" name="role" placeholder="Software Engineer">
@@ -361,106 +53,20 @@
         </form>
     </div>
 
-    <!-- ===== SUCCESS POPUP (hidden by default, shown after successful submit) ===== -->
+    <!-- ===== SUCCESS POPUP ===== -->
     <div class="popup-overlay" id="popup">
         <div class="popup-box">
             <div class="success-icon">✓</div>
             <h2>Success!</h2>
             <p id="popupMessage">Employee saved successfully</p>
-            <button onclick="closePopup()">Continue</button>
+            <div class="popup-buttons">
+                <button onclick="closePopup()">Add Another</button>
+                <a href="/employees" class="view-all-link">View All</a>
+            </div>
         </div>
     </div>
 
-    <script>
-        // ===== GRAB REFERENCES TO HTML ELEMENTS =====
-        const form = document.getElementById('employeeForm');
-        const popup = document.getElementById('popup');
-        const popupMessage = document.getElementById('popupMessage');
-
-        // List of all field names so we can loop through them easily
-        const fields = ['name', 'address', 'salary', 'role'];
-
-        // ===== HANDLE FORM SUBMIT =====
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault(); // Stop the default browser form submit (no page reload)
-            let valid = true;   // Track whether all fields pass validation
-
-            // Loop through each field and validate it
-            fields.forEach(field => {
-                const input = document.getElementById(field);
-                const error = document.getElementById(field + 'Error');
-                const value = input.value.trim(); // Remove extra spaces
-
-                // CHECK 1: Field is empty
-                if (!value) {
-                    input.classList.add('error'); // Add red border
-                    error.textContent = field.charAt(0).toUpperCase() + field.slice(1) + ' is required';
-                    error.style.display = 'block'; // Show error message
-                    valid = false;
-                }
-                // CHECK 2: Salary must be positive (greater than 0)
-                else if (field === 'salary' && Number(value) <= 0) {
-                    input.classList.add('error');
-                    error.textContent = 'Salary must be a positive number';
-                    error.style.display = 'block';
-                    valid = false;
-                }
-            });
-
-            // If any field failed validation, stop here
-            if (!valid) return;
-
-            // ===== BUILD DATA OBJECT TO SEND TO SERVER =====
-            const formData = {
-                name: document.getElementById('name').value,
-                address: document.getElementById('address').value,
-                salary: document.getElementById('salary').value,
-                role: document.getElementById('role').value
-            };
-
-            // ===== SEND DATA TO BACKEND VIA FETCH (AJAX) =====
-            try {
-                const response = await fetch('/employees/add', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData) // Convert object to JSON string
-                });
-
-                const result = await response.json(); // Parse the JSON response
-
-                // If server says success, show popup and clear form
-                if (result.success) {
-                    popupMessage.textContent = 'Employee ' + result.employee.employeeNumber + ' has been added successfully!';
-                    popup.style.display = 'flex'; // Show the popup
-                    form.reset(); // Clear all input fields
-                } else {
-                    // Server returned an error message
-                    alert(result.message || 'Something went wrong');
-                }
-            } catch (err) {
-                // Network or unexpected error
-                console.error('Full error:', err);
-                alert('Error: ' + err.message);
-            }
-        });
-
-        // ===== CLOSE POPUP WHEN "CONTINUE" IS CLICKED =====
-        function closePopup() {
-            popup.style.display = 'none';
-        }
-
-        // ===== CLEAR ERROR WHEN USER STARTS TYPING =====
-        // Loop through each field and listen for input events
-        fields.forEach(field => {
-            const input = document.getElementById(field);
-            const error = document.getElementById(field + 'Error');
-
-            input.addEventListener('input', function () {
-                input.classList.remove('error');     // Remove red border
-                error.style.display = 'none';        // Hide error message
-            });
-        });
-    </script>
+    <script src="/javascripts/addEmployee.js"></script>
 
 </body>
 
