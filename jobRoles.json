@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Software Engineer",
+    "level": "Associate",
+    "capability": "Software Engineering",
+    "description": "Responsible for designing, developing and maintaining software solutions to meet business needs."
+  },
+  {
+    "id": 2,
+    "name": "Delivery Manager",
+    "level": "Manager",
+    "capability": "Delivery Management",
+    "description": "Leads delivery of complex projects, managing risks, stakeholders and cross-functional teams."
+  },
+  {
+    "id": 3,
+    "name": "UX Designer",
+    "level": "Consultant",
+    "capability": "User Experience",
+    "description": "Creates user-centred designs by understanding business requirements and user feedback."
+  },
+  {
+    "name": "Senior manager",
+    "level": "C-Suite",
+    "capability": "Senior management",
+    "description": "Overall management of verticals.",
+    "id": 4
+  }
+]

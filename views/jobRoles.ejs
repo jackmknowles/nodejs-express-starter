@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Roles</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <h1>Job Roles</h1>
+
+    <% if (jobRoles && jobRoles.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Capability</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% jobRoles.forEach(jobRole => { %>
+                    <tr>
+                        <td><%= jobRole.name %></td>
+                        <td><%= jobRole.level %></td>
+                        <td><%= jobRole.capability %></td>
+                        <td><%= jobRole.description %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No job roles found.</p>
+    <% } %>
+
+    <a href="/job-roles/add"><button>Add Job Role</button></a>
+</body>
+</html>
