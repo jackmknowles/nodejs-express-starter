@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>View Employees</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/viewEmployees.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+<<<<<<< HEAD
+=======
+        <!-- Header with title and Add Employee button -->
+>>>>>>> origin/main
+        <div class="header">
+            <div class="header-left">
+                <h1>👥 All Employees</h1>
+                <p>View and manage your team members</p>
+            </div>
+            <a href="/employees/add" class="add-btn">+ Add Employee</a>
+        </div>
+
+<<<<<<< HEAD
+=======
+        <!-- If employees exist, show the table. Otherwise show empty state -->
+>>>>>>> origin/main
+        <% if (employees && employees.length > 0) { %>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Emp No.</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Salary</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+<<<<<<< HEAD
+=======
+                        <!-- Loop through every employee from the JSON file -->
+>>>>>>> origin/main
+                        <% employees.forEach(function(emp) { %>
+                            <tr>
+                                <td><span class="emp-number"><%= emp.employeeNumber %></span></td>
+                                <td><%= emp.name %></td>
+                                <td><%= emp.address %></td>
+                                <td class="salary">£<%= Number(emp.salary).toLocaleString() %></td>
+                                <td><%= emp.role %></td>
+                                <td>
+                                    <div class="actions">
+<<<<<<< HEAD
+                                        <a href="/employees/<%= emp.id %>" class="btn-view">View</a>
+                                        <button class="btn-edit" onclick="handleEdit('<%= emp.employeeNumber %>')">Edit</button>
+                                        <a href="/employees/delete/<%= emp.id %>" class="btn-delete">Delete</a>
+=======
+                                        <!-- View button - opens employee detail page (US 014) -->
+                                        <a href="/employees/<%= emp.id %>" class="btn-view">View</a>
+                                        <!-- Edit & Delete - placeholders for future user stories -->
+                                        <button class="btn-edit" onclick="handleEdit('<%= emp.employeeNumber %>')">Edit</button>
+                                        <button class="btn-delete" onclick="handleDelete('<%= emp.employeeNumber %>')">Delete</button>
+>>>>>>> origin/main
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+<<<<<<< HEAD
+=======
+            <!-- Empty state shown when no employees exist yet -->
+>>>>>>> origin/main
+            <div class="empty-state">
+                <div class="icon">📋</div>
+                <h3>No employees yet</h3>
+                <p>Click "Add Employee" to create your first record</p>
+            </div>
+        <% } %>
+
+    </div>
+
+<<<<<<< HEAD
+    <!-- DELETE CONFIRMATION POPUP -->
+    <div class="popup-overlay" id="deletePopup">
+        <div class="popup-box">
+            <div class="warning-icon">⚠️</div>
+            <h2>Delete Employee?</h2>
+            <p>Are you sure you want to delete <strong id="deleteEmployeeName"></strong>?<br>This action cannot be undone.</p>
+            <div class="popup-buttons">
+                <button class="btn-cancel" onclick="cancelDelete()">No, Cancel</button>
+                <button class="btn-confirm-delete" onclick="confirmDelete()">Yes, Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS POPUP -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-box">
+            <div class="success-icon">✓</div>
+            <h2>Deleted!</h2>
+            <p>Employee has been removed successfully.</p>
+            <div class="popup-buttons">
+                <button class="btn-ok" onclick="closeSuccessPopup()">OK</button>
+            </div>
+        </div>
+    </div>
+
+=======
+>>>>>>> origin/main
+    <script src="/javascripts/viewEmployees.js"></script>
+
+</body>
+
+</html>

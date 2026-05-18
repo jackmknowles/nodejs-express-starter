@@ -1,8 +1,86 @@
 body {
+  margin: 0;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #f7f9fb;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
+
+.navbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #ffffff;
+  color: #0b3d91;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 12px;
+  color: #0b3d91;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.navbar-logo {
+  width: 70px;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  color: #0b3d91;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+/* removed redundant global `nav` rule to avoid conflicts with .navbar */
+
+/* Footer styles */
+.site-footer {
+  background: #283583;
+  color: #ffffff;
+  padding: 16px 24px;
+  border-radius: 8px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,z0.95);
+}
+
+.footer-left { font-size: 0.95rem; opacity: 0.95; }
+
