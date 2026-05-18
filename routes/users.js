@@ -4,7 +4,7 @@ var router = express.Router();
 const UserService = require('../services/userService');
 const userService = new UserService();
 
-// Create a new user form
+// Create a new user form2
 router.get('/add', (req, res) => {
   res.render('addUser')
 });
@@ -17,9 +17,15 @@ router.post('/add', (req, res) => {
 });
 
 // Read all users
-router.get('/', (req, res) => {
-  const users = userService.getAllUsers();
-  res.render('users', { users: users })
+// router.get('/', (req, res) => {
+//   const users = userService.getAllUsers();
+//   res.render('users', { users: users })
+// });
+
+router.get('/', async (req, res) => {
+  const readUser = await userService.readUsers();
+  if(!readUser) return res.status(404).send('No user to show');
+  res.render('users', { users: readUser });
 });
 
 // Read a user by ID
