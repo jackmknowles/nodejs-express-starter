@@ -28,7 +28,12 @@ class EmployeeService {
         return this.readEmployees();
     }
 
-    // Generate a unique employee number like EMP001, EMP002...
+    // Get a single employee by their ID
+    getEmployeeById(id) {
+        const employees = this.readEmployees();
+        return employees.find(emp => emp.id === id);
+    }
+
     generateEmployeeNumber(employees) {
         const nextId = employees.length ? employees[employees.length - 1].id + 1 : 1;
         return 'EMP' + String(nextId).padStart(3, '0');

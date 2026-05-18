@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>View Employees</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/viewEmployees.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header with title and Add Employee button -->
+        <div class="header">
+            <div class="header-left">
+                <h1>👥 All Employees</h1>
+                <p>View and manage your team members</p>
+            </div>
+            <a href="/employees/add" class="add-btn">+ Add Employee</a>
+        </div>
+
+        <!-- If employees exist, show the table. Otherwise show empty state -->
+        <% if (employees && employees.length > 0) { %>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Emp No.</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Salary</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop through every employee from the JSON file -->
+                        <% employees.forEach(function(emp) { %>
+                            <tr>
+                                <td><span class="emp-number"><%= emp.employeeNumber %></span></td>
+                                <td><%= emp.name %></td>
+                                <td><%= emp.address %></td>
+                                <td class="salary">£<%= Number(emp.salary).toLocaleString() %></td>
+                                <td><%= emp.role %></td>
+                                <td>
+                                    <div class="actions">
+                                        <!-- View button - opens employee detail page (US 014) -->
+                                        <a href="/employees/<%= emp.id %>" class="btn-view">View</a>
+                                        <!-- Edit & Delete - placeholders for future user stories -->
+                                        <button class="btn-edit" onclick="handleEdit('<%= emp.employeeNumber %>')">Edit</button>
+                                        <button class="btn-delete" onclick="handleDelete('<%= emp.employeeNumber %>')">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        <% } else { %>
+            <!-- Empty state shown when no employees exist yet -->
+            <div class="empty-state">
+                <div class="icon">📋</div>
+                <h3>No employees yet</h3>
+                <p>Click "Add Employee" to create your first record</p>
+            </div>
+        <% } %>
+
+    </div>
+
+    <script src="/javascripts/viewEmployees.js"></script>
+
+</body>
+
+</html>
