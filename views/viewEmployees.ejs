@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Employees</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/viewEmployees.css">
@@ -11,7 +12,7 @@
 <body>
 
 <%- include('partials/navBar') %>
-
+<main>
     <div class="container">
 
         <!-- Header with title and Add Employee button -->
@@ -29,12 +30,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Emp No.</th>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Salary (Per Annum)</th>
-                            <th>Role</th>
-                            <th>Actions</th>
+                            <th scope="col">Emp No.</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Salary (Per Annum)</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +79,7 @@
         <% } %>
 
     </div>
+</main>
 
     <%- include('partials/footer') %>
     

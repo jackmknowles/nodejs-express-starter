@@ -9,6 +9,8 @@
     <link rel="icon" href="/images/kainos_favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <%- include('partials/navBar') %>
+<main>
     <div class="container">
         <div class="header">
             <div class="header-left">
@@ -21,8 +23,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>Field</th>
-                    <th>Value</th>
+                    <th scope="col">Field</th>
+                    <th scope="col">Value</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,5 +47,7 @@
             </tbody>
         </table>
     </div>
+</main>
+    <%- include('partials/footer') %>
 </body>
 </html>

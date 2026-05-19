@@ -9,6 +9,7 @@
 </head>
 <body>
     <%- include('partials/navBar') %>
+<main>
     <div class="container">
         <div class="header">
             <div class="header-left">
@@ -23,11 +24,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Level</th>
-                            <th>Capability</th>
-                            <th>Description</th>
-                            <th>Actions</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Capability</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +60,7 @@
             </div>
         <% } %>
     </div>
-
+</main>
     <%- include('partials/footer') %>
 </body>
 </html>
