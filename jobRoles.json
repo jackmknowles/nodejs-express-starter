@@ -26,5 +26,12 @@
     "capability": "Senior management",
     "description": "Overall management of verticals.",
     "id": 4
+  },
+  {
+    "name": "Web Developer",
+    "level": "Associate",
+    "capability": "Software Engineering",
+    "description": "Responsible for designing, developing and maintaining full-stack web development software solutions to meet business needs.",
+    "id": 5
   }
 ]

@@ -45,7 +45,14 @@
                                 <td><%= emp.name %></td>
                                 <td><%= emp.address %></td>
                                 <td class="salary">£<%= Number(emp.salary).toLocaleString() %></td>
-                                <td><%= emp.role %></td>
+                                <td>
+                                    <% const jobRole = jobRoles.find(jr => jr.name === emp.role); %>
+                                    <% if (jobRole) { %>
+                                        <a href="/job-roles/<%= jobRole.id %>"><%= emp.role %></a>
+                                    <% } else { %>
+                                        <%= emp.role %>
+                                    <% } %>
+                                </td>
                                 <td>
                                     <div class="actions">
                                         <!-- View button - opens employee detail page (US 014) -->
