@@ -88,7 +88,7 @@ body::after { width: 400px; height: 400px; bottom: -150px; right: -150px; animat
     margin-bottom: 40px;
 }
 
-/* Footer styles: match navbar appearance for pages using this stylesheet */
+
 .site-footer {
     display: flex;
     align-items: center;
