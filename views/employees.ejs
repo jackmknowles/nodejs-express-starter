@@ -4,42 +4,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employees list List</title>
+    <title>Employees List</title>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Your Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Employees List</h1>
+<body class="has-background-light" style="min-height: 100vh;">
 
-    <% if (employees && employees.length > 0) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Role</th>
-                    <th>Salary</th>
-                    <th>Employee number </th>
-                </tr>
-            </thead>
-            <tbody>
-                <% employees.forEach(employee => { %>
-                    <tr>
-                        <td><%= employee.name %></td>
-                        <td><%= employee.address %></td>
-                        <td><%= employee.role %></td>
-                        <td><%= employee.salary %></td>
-                        <td><%= employee.employeeNumber %></td>
-                        <td><a href="/update/<%= employee.id%>">Edit</a></td>
-                    </tr>
-                <% }); %>
-            </tbody>
-        </table>
-    <% } else { %>
-        <p>No employees found.</p>
-    <% } %>
+    <!-- Navigation Bar / Header -->
+    <nav class="navbar is-link mb-5" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item is-size-4 has-text-weight-bold" href="#">
+                    <span class="icon mr-2"><i class="fas fa-users-cog"></i></span> StaffPortal
+                </a>
+            </div>
+        </div>
+    </nav>
 
-    <form action="/employees/add" method="get">
-        <input type="submit" value="Create New Employee">
-    </form> 
+    <!-- Main Content Container -->
+    <main class="container px-4">
+        
+        <!-- Header Section with Title and Add Button -->
+        <div class="level mb-5">
+            <div class="level-left">
+                <div class="level-item">
+                    <div>
+                        <h1 class="title is-2 has-text-dark">Employees Directory</h1>
+                        <p class="subtitle is-6 has-text-grey">Manage and view your organization's team members.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <a href="/employees/add" class="button is-link is-medium">
+                        <span class="icon"><i class="fas fa-user-plus"></i></span>
+                        <span>Create New Employee</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table / Content Card -->
+        <div class="card" style="border-radius: 8px; overflow: hidden;">
+            <div class="card-content p-0">
+                <% if (employees && employees.length > 0) { %>
+                    <div class="table-container">
+                        <table class="table is-striped is-hoverable is-fullwidth mb-0">
+                            <thead>
+                                <tr class="has-background-white-ter">
+                                    <th class="py-4 px-5">Employee Number</th>
+                                    <th class="py-4 px-5">Name</th>
+                                    <th class="py-4 px-5">Role</th>
+                                    <th class="py-4 px-5">Address</th>
+                                    <th class="py-4 px-5">Salary</th>
+                                    <th class="py-4 px-5 has-text-centered">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% employees.forEach(employee => { %>
+                                    <tr>
+                                        <td class="py-4 px-5 has-text-weight-semibold has-text-grey">
+                                            #<%= employee.employeeNumber %>
+                                        </td>
+                                        <td class="py-4 px-5">
+                                            <span class="has-text-weight-medium"><%= employee.name %></span>
+                                        </td>
+                                        <td class="py-4 px-5">
+                                            <span class="tag is-info is-light"><%= employee.role %></span>
+                                        </td>
+                                        <td class="py-4 px-5 has-text-grey-dark"><%= employee.address %></td>
+                                        <td class="py-4 px-5 has-text-weight-medium"><%= employee.salary %></td>
+                                        <td class="py-4 px-5">
+                                            <!-- Buttons Group for Actions -->
+                                            <div class="buttons is-centered fields are-addons">
+                                                <!-- Edit Button -->
+                                                <a href="/update/<%= employee.id %>" class="button is-small is-light is-link">
+                                                    <span class="icon is-small"><i class="fas fa-edit"></i></span>
+                                                    <span>Edit</span>
+                                                </a>
+                                                
+                                                <!-- Delete Button Form -->
+                                                <form action="/delete/<%= employee.id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this employee?');" style="display: inline;">
+                                                    <button type="submit" class="button is-small is-light is-danger">
+                                                        <span class="icon is-small"><i class="fas fa-trash-alt"></i></span>
+                                                        <span>Delete</span>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } else { %>
+                    <!-- Empty State -->
+                    <div class="has-text-centered py-6">
+                        <span class="icon is-large has-text-grey-light mb-3">
+                            <i class="fas fa-folder-open fa-3x"></i>
+                        </span>
+                        <p class="is-size-5 has-text-grey">No employees found.</p>
+                        <p class="has-text-grey-light">Get started by adding your first team member.</p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="footer has-background-light mt-6">
+        <div class="content has-text-centered has-text-grey-light is-size-7">
+            <p>&copy; 2026 StaffPortal Internal Directory.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
